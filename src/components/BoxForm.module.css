@@ -1,0 +1,13 @@
+.description{
+    position: absolute;
+    background-color: aquamarine;
+    width: 250px;
+    display: flex;
+}
+
+.description input{
+    width: 200px;
+    padding: 5px;
+    display: inline;
+}
+
