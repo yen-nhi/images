@@ -6,14 +6,14 @@
 ** How to run
 1. Download or clone the repository to local.
 2. Open in terminal
-    # go inside the project repository
-    cd images
+    * go inside the project repository
+    `cd images`
 
-    # install required packages
-    npm install
+    * install required packages
+    `npm install`
 
-    # Run on local server
-    npm start
+    * Run on local server
+    `npm start`
 
 3. Open browser to see the app.
 
