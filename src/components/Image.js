@@ -40,7 +40,13 @@ const SingleImage = (props) => {
       }, [])
 
     return(
-        <canvas ref={canvasRef} width={300} height={300}></canvas> 
+        <div className={classes.image}>
+            <canvas 
+                ref={canvasRef} 
+                width={300} 
+                height={300}>
+            </canvas> 
+        </div>
     )
 };
 

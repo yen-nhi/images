@@ -23,9 +23,9 @@ const Images = () => {
     const imagesEl = images.map(image => <SingleImage imgID={image.id} url={image.url}/>);
   
     return(
-        <div className={classes.imagesDisplay}>
+        <span className={classes.imagesDisplay}>
             {imagesEl}
-        </div>
+        </span>
     )
 };
 

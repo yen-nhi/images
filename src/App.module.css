@@ -1,3 +1,11 @@
 .app{
     margin: 50px;
 }
+
+.upload, .finish{
+    background-color: skyblue;
+    padding: 5px;
+    border: none;
+    width: 70px;
+    font-weight: bold;
+}

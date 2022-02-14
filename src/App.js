@@ -1,7 +1,7 @@
 import Canvas from "./components/Canvas";
 import Images from "./components/Images";
 import classes from './App.module.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { storage } from './firebase/firebase';
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
 import { getDatabase, ref as rtref, push } from "firebase/database";
@@ -50,14 +50,16 @@ function App() {
 
 
   return(
+    <React.Fragment>
       <div className={classes.app}>
         <h3>Upload some image to annotate</h3>
         <input type="file" onChange={fileChangeHandler} className={classes.chooseFile}/>
-        <button type="button" onClick={fileUploadHandler}>Upload</button>
+        <button type="button" onClick={fileUploadHandler} className={classes.upload}>Upload</button>
         {imageUrl !== null && <Canvas imageUrl={imageUrl} imageKey={imageKey}/>}
-        {imageUrl !== null && <button onClick={reload}>Finish</button>}
-        <Images/>
+        {imageUrl !== null && <button onClick={reload} className={classes.finish}>Finish</button>}
       </div>
+      <Images/>
+    </React.Fragment>
   )
 };
 
