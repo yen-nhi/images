@@ -1,5 +1,5 @@
 import classes from './Canvas.module.css';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import BoxForm from "./BoxForm";
 
 const Canvas = (props) => {
@@ -42,6 +42,10 @@ const Canvas = (props) => {
   }
 
   const handleMouseDown = e => {
+    console.log('DOWN');
+    console.log('Down boxes', boxes);
+    console.log('Down current box', currentBox);
+
     if (!firstBox && !annotated) {
       boxes.pop();
       setBoxes(boxes);
@@ -54,46 +58,54 @@ const Canvas = (props) => {
   }  
 
   const handleMouseUp = e => {
+    console.log('UP');
+    console.log('Up boxes', boxes);
+    console.log('Up current box', currentBox);
+
+
     if (currentBox !== null && currentBox.coor.w !== 0 && currentBox.coor.h !== 0) {
       setBoxes([...boxes, currentBox]);
       setCoordinate(currentBox.coor);
       setNewDraw(true);
       setFirstBox(false);
-      // drawBoxes();
+      drawBoxes();
     }
     setCurrentBox(null); 
   }  
 
   const handleMouseOut = e => {
-    setCurrentBox(null);
-    drawBoxes();
+    
+    console.log('OUT');
+    console.log('Out boxes', boxes);
+    console.log('Out current box', currentBox);
+    if (currentBox !== null) {
+      setCurrentBox(null);
+      setAnnotated(true);
+      // drawBoxes();  
+    }
   }
 
   const handleMouseMove = e => {
+    console.log('MOVE');
+
     if (currentBox !== null) {
       const { x, y, w, h } = currentBox.coor;
       const mouseX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
       const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
       setCurrentBox({coor: {x, y, w: mouseX - x, h: mouseY - y}, desc: ''});
       drawBoxes();
+      console.log('Move current box', currentBox);
+
     }
   }
 
   const annotationHandler = (text) => {
     let arr = [...boxes];
     let lastBox = arr[arr.length-1];
-    console.log(lastBox)
     lastBox.desc = text;
-    console.log(lastBox)
     setBoxes(arr);
     setAnnotated(true);
   };
-
-
-  // initialize the canvas context
-  useEffect(() => {
-    // dynamically assign the width and height to canvas
-  }, []);
 
   useEffect(() => {   
     drawBoxes();
