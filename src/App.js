@@ -26,6 +26,7 @@ function App() {
 
  const fileUploadHandler = () => {
     if (image === null) {
+      alert('No file has chosen!');
       return
     }
    
