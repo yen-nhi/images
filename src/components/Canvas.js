@@ -61,12 +61,12 @@ const Canvas = (props) => {
     console.log('UP');
     console.log('Up boxes', boxes);
     console.log('Up current box', currentBox);
-
-
-    if (currentBox !== null && currentBox.coor.w !== 0 && currentBox.coor.h !== 0) {
+    if (currentBox !== null) {
+      if (currentBox.coor.w !== 0 && currentBox.coor.h !== 0) {
+        setCoordinate(currentBox.coor);
+        setNewDraw(true);
+      }
       setBoxes([...boxes, currentBox]);
-      setCoordinate(currentBox.coor);
-      setNewDraw(true);
       setFirstBox(false);
       drawBoxes();
     }
