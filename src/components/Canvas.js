@@ -3,7 +3,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import BoxForm from "./BoxForm";
 
 const Canvas = (props) => {
-  console.log('RERENDER!')
   const canvas = useRef();
   let image = new Image();
   image.src = props.imageUrl;
@@ -43,8 +42,6 @@ const Canvas = (props) => {
   }
 
   const handleMouseDown = e => {
-    console.log('Mouse down');
-
     if (!firstBox && !annotated) {
       boxes.pop();
       setBoxes(boxes);
@@ -57,8 +54,6 @@ const Canvas = (props) => {
   }  
 
   const handleMouseUp = e => {
-    console.log('Mouse up');
-
     if (currentBox !== null && currentBox.coor.w !== 0 && currentBox.coor.h !== 0) {
       setBoxes([...boxes, currentBox]);
       setCoordinate(currentBox.coor);
@@ -70,13 +65,11 @@ const Canvas = (props) => {
   }  
 
   const handleMouseOut = e => {
-    console.log('Mouse out');
     setCurrentBox(null);
     drawBoxes();
   }
 
   const handleMouseMove = e => {
-    console.log('Mouse move');
     if (currentBox !== null) {
       const { x, y, w, h } = currentBox.coor;
       const mouseX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
@@ -85,7 +78,6 @@ const Canvas = (props) => {
       drawBoxes();
     }
   }
-
 
   const annotationHandler = (text) => {
     let arr = [...boxes];

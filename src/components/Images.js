@@ -20,12 +20,11 @@ const Images = () => {
         }).catch(err => console.log(err))
     }, [])
 
-    console.log(images);
     const imagesEl = images.map(image => <SingleImage imgID={image.id} url={image.url}/>);
   
     return(
         <div className={classes.imagesDisplay}>
-                {imagesEl}
+            {imagesEl}
         </div>
     )
 };

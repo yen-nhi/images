@@ -40,9 +40,7 @@ const SingleImage = (props) => {
       }, [])
 
     return(
-        <React.Fragment>
-            <canvas ref={canvasRef} width={300} height={300}></canvas> 
-        </React.Fragment>
+        <canvas ref={canvasRef} width={300} height={300}></canvas> 
     )
 };
 
