@@ -42,9 +42,6 @@ const Canvas = (props) => {
   }
 
   const handleMouseDown = e => {
-    console.log('DOWN');
-    console.log('Down boxes', boxes);
-    console.log('Down current box', currentBox);
 
     if (!firstBox && !annotated) {
       boxes.pop();
@@ -58,9 +55,6 @@ const Canvas = (props) => {
   }  
 
   const handleMouseUp = e => {
-    console.log('UP');
-    console.log('Up boxes', boxes);
-    console.log('Up current box', currentBox);
     if (currentBox !== null) {
       if (currentBox.coor.w !== 0 && currentBox.coor.h !== 0) {
         setCoordinate(currentBox.coor);
@@ -74,11 +68,7 @@ const Canvas = (props) => {
   }  
 
   const handleMouseOut = e => {
-    
-    console.log('OUT');
-    console.log('Out boxes', boxes);
-    console.log('Out current box', currentBox);
-    if (currentBox !== null) {
+        if (currentBox !== null) {
       setCurrentBox(null);
       setAnnotated(true);
       // drawBoxes();  
@@ -86,7 +76,6 @@ const Canvas = (props) => {
   }
 
   const handleMouseMove = e => {
-    console.log('MOVE');
 
     if (currentBox !== null) {
       const { x, y, w, h } = currentBox.coor;
@@ -94,8 +83,6 @@ const Canvas = (props) => {
       const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
       setCurrentBox({coor: {x, y, w: mouseX - x, h: mouseY - y}, desc: ''});
       drawBoxes();
-      console.log('Move current box', currentBox);
-
     }
   }
 
